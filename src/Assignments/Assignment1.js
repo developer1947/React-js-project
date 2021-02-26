@@ -8,7 +8,8 @@ export default class Assignment1 extends React.Component{
       num1:0,
       num2:0,
       num3:0,
-      sum:0
+      sum:0,
+      average:0
       
     }
   }
@@ -27,17 +28,27 @@ handlenum3= (e) =>{
         num3: e.target.value
     })
 }
-handleSum= (e) =>{
+handleSum= (handleAverage) =>{
     this.setState({
         sum: parseInt(this.state.num1) +parseInt (this.state.num2) +parseInt (this.state.num3)
-    })
+    },
+    
+    handleAverage= (average)=>{
+       this.setState({average:this.state.sum/3})
+    }
+      
+    
+    )
 }
+
+
 handleReset= () =>{
     this.setState({
       num1: 0,
       num2: 0,
       num3: 0,
-      sum: 0
+      sum: 0,
+      average:0
     })
 }
   render() {
@@ -67,7 +78,7 @@ handleReset= () =>{
           onClick={this.handleSum}
          
          >
-             Add
+             Add & Average
          </button>
          <button
           onClick={this.handleReset}
@@ -76,7 +87,9 @@ handleReset= () =>{
          </button>
          <br/>
         The Sum is: {this.state.sum}
-         
+        
+        <br/>
+         The average is:{this.state.average}
      </div>
     )
   }
